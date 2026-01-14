@@ -1,1 +1,8 @@
 .vs/
+bin/
+obj/
+*.user
+*.suo
+packages/
+push_output.txt
+*.log
