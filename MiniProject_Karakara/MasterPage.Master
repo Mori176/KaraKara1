@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="MiniProject_Karakara.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Karakara</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="~/Styles/StyleSheet.css?3" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="logo">
+                <a href="HomePage.aspx">Karäkarä</a>
+            </div>
+
+            <div class="right-section">
+                <div id="customerLinks" runat="server" class="nav-links">
+                    <a href="HomePage.aspx">About Us</a>
+                    <div id="navHide" runat="server" visible="false">
+                        <a href="ProductPage.aspx">Products</a>
+                        <a href="CartPage.aspx">Shopping Cart</a>
+                        <a href="OrderHistoryPage.aspx">Order History</a>
+                    </div>
+                </div>
+                <div id="adminLinks" runat="server" class="nav-links" visible="false"> 
+                    <a href="HomePage.aspx">About Us</a>
+                    <a href="ManageUserPage.aspx">Manage User</a>
+                    <a href="ManageProductPage.aspx">Manage Products</a>
+                </div>
+                
+                <div class="login-btn">
+                    <asp:LinkButton ID="btnAuth" runat="server" Text="Sign In" CssClass="auth-btn" CausesValidation="False" OnClick="btnAuth_Click" />
+                </div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿MSBuild version 17.14.23+b0019275e for .NET Framework
+Build started 14/1/2026 1:35:35 AM.
+
+Project "C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\MiniProject_Karakara.csproj" on node 1 (default targets).
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(1259,5): error MSB3644: The reference assemblies for .NETFramework,Version=v4.7.2 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download .NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks [C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\MiniProject_Karakara.csproj]
+Done Building Project "C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\MiniProject_Karakara.csproj" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\MiniProject_Karakara.csproj" (default target) (1) ->
+(GetReferenceAssemblyPaths target) -> 
+  C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(1259,5): error MSB3644: The reference assemblies for .NETFramework,Version=v4.7.2 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download .NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks [C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\MiniProject_Karakara.csproj]
+
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.28
