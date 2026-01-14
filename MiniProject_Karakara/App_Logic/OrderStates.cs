@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace MiniProject_Karakara
 {
@@ -42,6 +43,17 @@ namespace MiniProject_Karakara
         {
             // Transition to Cancelled
             // Need to Restock items ideally.
+             OrderRepository orderRepo = new OrderRepository();
+             ProductRepository productRepo = new ProductRepository();
+             
+             DataTable items = orderRepo.GetOrderItems(context.OrderID);
+             foreach(DataRow row in items.Rows)
+             {
+                 int pid = Convert.ToInt32(row["ProductID"]);
+                 int qty = Convert.ToInt32(row["Quantity"]);
+                 productRepo.Restock(pid, qty);
+             }
+
              context.SetState(new CancelledState());
         }
 

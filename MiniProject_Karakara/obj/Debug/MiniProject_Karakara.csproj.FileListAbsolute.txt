@@ -116,3 +116,6 @@ C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_
 C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\bin\roslyn\VBCSCompiler.exe.config
 =======
 >>>>>>> f1f8904534b68d426f5c2e7ecb0d98561e6e2900
+C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\kide200\.gemini\antigravity\scratch\AspNetProject\KaraKara\MiniProject_Karakara\obj\Debug\MiniProj.52A6E263.Up2Date

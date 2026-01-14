@@ -76,5 +76,12 @@ namespace MiniProject_Karakara
                 cmd.Parameters.AddWithValue("@ID", orderId);
             });
         }
+
+
+        public DataTable GetOrderItems(int orderId)
+        {
+            string query = "SELECT ProductID, Quantity FROM OrderItems WHERE OrderID = @ID";
+            return _db.ExecuteQuery(query, cmd => cmd.Parameters.AddWithValue("@ID", orderId));
+        }
     }
 }

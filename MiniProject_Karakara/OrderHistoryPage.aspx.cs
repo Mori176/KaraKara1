@@ -55,20 +55,14 @@ namespace MiniProject_Karakara
                 .GroupBy(r => r.Field<string>("OrderNumber"))
                 .Select(g => new {
                     OrderNumber = g.Key,
-<<<<<<< HEAD
                     // Assuming OrderID is same for the group, take first
                     OrderID = g.First().Field<int>("OrderID"), 
-=======
->>>>>>> f1f8904534b68d426f5c2e7ecb0d98561e6e2900
                     OrderDate = g.First().Field<DateTime>("OrderDate"),
                     TotalAmount = g.First().Field<decimal>("TotalAmount"),
                     Tax = g.First().Field<decimal>("Tax"),
                     AmountToPay = g.First().Field<decimal>("AmountToPay"),
-<<<<<<< HEAD
                     // Check if Status column exists (if script run), else default
                     Status = g.First().Table.Columns.Contains("Status") ? g.First().Field<string>("Status") : "Pending",
-=======
->>>>>>> f1f8904534b68d426f5c2e7ecb0d98561e6e2900
                     Items = g.CopyToDataTable()
                 });
 
@@ -90,7 +84,6 @@ namespace MiniProject_Karakara
                 innerRepeater.DataBind();
             }
         }
-<<<<<<< HEAD
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             try
@@ -117,8 +110,6 @@ namespace MiniProject_Karakara
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
-=======
->>>>>>> f1f8904534b68d426f5c2e7ecb0d98561e6e2900
 
     }
 }

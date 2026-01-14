@@ -52,5 +52,14 @@ namespace MiniProject_Karakara
              string query = "SELECT StockQuantity FROM Products WHERE ProductID = @ID";
              return _db.ExecuteScalar<int>(query, cmd => cmd.Parameters.AddWithValue("@ID", productId));
         }
+
+        public void Restock(int productId, int quantity)
+        {
+            string query = "UPDATE Products SET StockQuantity = StockQuantity + @Qty WHERE ProductID = @ID";
+            _db.ExecuteNonQuery(query, cmd => {
+                cmd.Parameters.AddWithValue("@Qty", quantity);
+                cmd.Parameters.AddWithValue("@ID", productId);
+            });
+        }
     }
 }
