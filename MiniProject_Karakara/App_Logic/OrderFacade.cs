@@ -33,7 +33,7 @@ namespace MiniProject_Karakara
                 decimal subTotal = 0;
                 foreach (DataRow row in cartItems.Rows)
                 {
-                    subTotal += Convert.ToDecimal(row["TotalPrice"]);
+                    subTotal += Convert.ToDecimal(row["TotalItemPrice"]);
                 }
 
                 decimal tax = _pricing.CalculateTax(subTotal);

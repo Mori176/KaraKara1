@@ -26,8 +26,7 @@
                     </asp:HyperLink>
                 </div>
 
-                <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound"
-                    OnItemCommand="Repeater1_ItemCommand">
+                <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
                     <ItemTemplate>
                         <div class="order-history-card">
                             <div class="order-header">
@@ -83,7 +82,7 @@
                                 <p>Status: <strong>
                                         <%# Eval("Status") %>
                                     </strong></p>
-                                <asp:Button ID="btnCancel" runat="server" Text="Cancel Order" CommandName="CancelOrder"
+                                <asp:Button ID="btnCancel" runat="server" Text="Cancel Order" OnClick="btnCancel_Click"
                                     CommandArgument='<%# Eval("OrderNumber") + "|" + Eval("Status") %>'
                                     Visible='<%# Eval("Status").ToString() != "Cancelled" %>' CssClass="cancel-btn" />
                             </div>

@@ -19,9 +19,10 @@ namespace MiniProject_Karakara
              */
             string query = @"
                 SELECT 
+                    uc.CartID,
                     uc.UserId, uc.ProductId, uc.quantity as Quantity, 
                     p.ProductName, p.Price, p.ProductImage,
-                    (p.Price * uc.quantity) as TotalPrice
+                    (p.Price * uc.quantity) as TotalItemPrice
                 FROM UserCart uc
                 JOIN Products p ON uc.ProductId = p.ProductID
                 WHERE uc.UserId = @UserId";
@@ -36,12 +37,30 @@ namespace MiniProject_Karakara
             
             // Note: Original code just did Insert. I'll stick to Insert for now to match behavior,
             // but ideally we should merge.
-            string query = "INSERT INTO UserCart (UserId, ProductId, quantity) VALUES (@UserId, @ProductId, @Qty)";
-            _db.ExecuteNonQuery(query, cmd => {
+            string checkQuery = "SELECT Count(*) FROM UserCart WHERE UserId = @UserId AND ProductId = @ProductId";
+            int count = _db.ExecuteScalar<int>(checkQuery, cmd => {
                 cmd.Parameters.AddWithValue("@UserId", userId);
                 cmd.Parameters.AddWithValue("@ProductId", productId);
-                cmd.Parameters.AddWithValue("@Qty", quantity);
             });
+
+            if (count > 0)
+            {
+                string updateQuery = "UPDATE UserCart SET quantity = quantity + @Qty WHERE UserId = @UserId AND ProductId = @ProductId";
+                _db.ExecuteNonQuery(updateQuery, cmd => {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.Parameters.AddWithValue("@ProductId", productId);
+                    cmd.Parameters.AddWithValue("@Qty", quantity);
+                });
+            }
+            else
+            {
+                string insertQuery = "INSERT INTO UserCart (UserId, ProductId, quantity) VALUES (@UserId, @ProductId, @Qty)";
+                _db.ExecuteNonQuery(insertQuery, cmd => {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.Parameters.AddWithValue("@ProductId", productId);
+                    cmd.Parameters.AddWithValue("@Qty", quantity);
+                });
+            }
         }
 
         public void ClearCart(int userId)

@@ -84,35 +84,30 @@ namespace MiniProject_Karakara
                 innerRepeater.DataBind();
             }
         }
-        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "CancelOrder")
+            try
             {
-                try
-                {
-                    string[] args = e.CommandArgument.ToString().Split('|');
-                    string orderNumber = args[0];
-                    string currentStatus = args[1];
+                Button btn = (Button)sender;
+                string[] args = btn.CommandArgument.ToString().Split('|');
+                string orderNumber = args[0];
+                string currentStatus = args[1];
 
-                    // We need OrderID. Since I didn't verify it's in the args or DB properly in the previous step,
-                    // I'll fetch it or use the one from the Grouping if I added it.
-                    // Let's rely on a helper fetch to be safe as I am editing blindly.
-                    int orderId = DatabaseHelper.Instance.ExecuteScalar<int>("SELECT OrderID FROM Orders WHERE OrderNumber = @N", cmd => cmd.Parameters.AddWithValue("@N", orderNumber));
+                int orderId = DatabaseHelper.Instance.ExecuteScalar<int>("SELECT OrderID FROM Orders WHERE OrderNumber = @N", cmd => cmd.Parameters.AddWithValue("@N", orderNumber));
 
-                    // Design Pattern 7: State Pattern Usage
-                    OrderContext context = new OrderContext(orderId, currentStatus);
-                    context.Cancel();
+                // Design Pattern 7: State Pattern Usage
+                OrderContext context = new OrderContext(orderId, currentStatus);
+                context.Cancel();
 
-                    lblMessage.Text = $"Order {orderNumber} has been cancelled.";
-                    lblMessage.ForeColor = System.Drawing.Color.Green;
-                    
-                    LoadOrderHistory(); // Refresh UI
-                }
-                catch (Exception ex)
-                {
-                    lblMessage.Text = "Error cancelling order: " + ex.Message;
-                    lblMessage.ForeColor = System.Drawing.Color.Red;
-                }
+                lblMessage.Text = $"Order {orderNumber} has been cancelled.";
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+
+                LoadOrderHistory(); // Refresh UI
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Error cancelling order: " + ex.Message;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
 

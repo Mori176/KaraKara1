@@ -35,7 +35,7 @@ namespace MiniProject_Karakara
             decimal total = 0;
             foreach(DataRow row in dt.Rows)
             {
-                total += Convert.ToDecimal(row["TotalPrice"]);
+                total += Convert.ToDecimal(row["TotalItemPrice"]);
             }
 
             if (total > 0)
