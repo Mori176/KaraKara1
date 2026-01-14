@@ -24,10 +24,21 @@
         <asp:Label ID="lblMessage" runat="server" CssClass="message" EnableViewState="false" />
 
         <div class="product-lists">
+<<<<<<< HEAD
 
 
             <!-- List View to display Products -->
             <asp:ListView ID="lvProducts" runat="server">
+=======
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnKarakara %>" SelectCommand="SELECT [ProductID], [ProductName], [Price], [ProductImage], [ProductDescription] FROM [Products] WHERE (@CategoryID = 0 OR [CategoryID] = @CategoryID)">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="ddlCategory" Name="CategoryID" PropertyName="SelectedValue" Type="Int32" DefaultValue="0" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
+            <!-- List View to display Products -->
+            <asp:ListView ID="lvProducts" runat="server" DataSourceID="SqlDataSource2">
+>>>>>>> f1f8904534b68d426f5c2e7ecb0d98561e6e2900
                 <LayoutTemplate>
                     <div class="product-grid">
                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
